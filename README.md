@@ -36,3 +36,4 @@ TimeOut:         time.Millisecond * 100, // чтобы не нервироват
 
 ## 2. Frontend
 ну там есть над чем поработать...
+![alt text](screenshot.png)
