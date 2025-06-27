@@ -1,0 +1,85 @@
+openapi: 3.0.0
+info:
+  title: WB Products API
+  version: 1.0.0
+  description: API для фильтрации товаров
+
+paths:
+  /api/products/:
+    get:
+      summary: Получить отфильтрованный список товаров
+      parameters:
+        - name: min_price
+          in: query
+          schema:
+            type: number
+          description: Минимальная цена товара
+        - name: max_price
+          in: query
+          schema:
+            type: number
+          description: Максимальная цена товара
+        - name: min_rating
+          in: query
+          schema:
+            type: number
+            minimum: 1
+            maximum: 5
+          description: Минимальный рейтинг (1-5)
+        - name: max_rating
+          in: query
+          schema:
+            type: number
+            minimum: 1
+            maximum: 5
+          description: Максимальный рейтинг (1-5)
+        - name: min_feedbacks
+          in: query
+          schema:
+            type: integer
+          description: Минимальное количество отзывов
+        - name: max_feedbacks
+          in: query
+          schema:
+            type: integer
+          description: Максимальное количество отзывов
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  products:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Product'
+                  count:
+                    type: integer
+                  filters:
+                    type: object
+        '400':
+          description: Неверные параметры запроса
+        '500':
+          description: Ошибка сервера
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        price:
+          type: number
+        sale_price:
+          type: number
+        rating:
+          type: number
+        feedbacks:
+          type: integer
+        search_query:
+          type: string
