@@ -29,7 +29,7 @@ func Load() *Config {
 		WBURL:           "https://search.wb.ru/exactmatch/ru/common/v4/search?",
 		Pages:           100, // количество страниц парсинга
 		DBPath:          "./data/products.db",
-		TimeOut:         time.Millisecond * 100, // чтобы не нервировать wb
+		TimeOut:         time.Millisecond * 10, // чтобы не нервировать wb
 	}
 	return config
 }
