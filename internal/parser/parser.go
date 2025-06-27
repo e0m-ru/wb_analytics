@@ -44,13 +44,13 @@ func ParseProducts(query string) error {
 
 		data, ok := result["data"].(map[string]any)
 		if !ok {
-			log.Print("failed to find data on goods in response")
-			break
+			return fmt.Errorf("failed to find data on goods in response")
 		}
 
 		products, ok := data["products"].([]any)
 		if !ok || len(products) == 0 {
 			log.Printf("no goods found or the pages of issuance ended")
+			break
 		}
 
 		// Собираем информацию о товарах
