@@ -2,7 +2,7 @@
 
 ## Инструкция по запуску:
 ```bash
-git clone github.com/e0m-ru/wb_analytics
+git clone https://github.com/e0m-ru/wb_analytics.git
 cd wb_analytics
 go run .
 ```
