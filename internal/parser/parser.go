@@ -45,7 +45,7 @@ func ParseProducts(query string) error {
 		data, ok := result["data"].(map[string]any)
 		if !ok {
 			log.Print("failed to find data on goods in response")
-			return nil
+			break
 		}
 
 		products, ok := data["products"].([]any)
